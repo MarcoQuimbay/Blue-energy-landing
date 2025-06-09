@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Presupuesto - Blue Energy Bikes</title>
+  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --titanium: #A0A0A0;
+      --white: #FFFFFF;
+      --hover-bg: #3a3a3a;
+      --card-bg: #2a2a2a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      padding-top: 110px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .dropdown-container {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--black);
+      z-index: 1000;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .dropdown-menu li {
+      margin: 0.5rem 0;
+    }
+
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: var(--white);
+      height: 3px;
+      margin: 5px 0;
+      width: 25px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--black);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      padding: 0.5rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--titanium);
+    }
+
+    @media (max-width: 850px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .card h2 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+
+    .card p, .card li, .card td, .card th {
+      color: var(--titanium);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid var(--titanium);
+      text-align: left;
+    }
+
+    th {
+      background-color: #1C1C1C;
+      color: var(--electric-blue);
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none;
+      }
+
+      td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+      }
+
+      td::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 45%;
+        padding-left: 0.75rem;
+        white-space: nowrap;
+        color: var(--electric-blue);
+        font-weight: bold;
+        content: attr(data-label);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown-container">
+          <button class="dropdown-button">Módulos ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="estado-actual.html">Estado actual</a></li>
+            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+            <li><a href="presupuesto.html">Presupuesto</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 style="text-align:center; color:var(--electric-blue); margin-bottom:2rem;">Presupuesto del Proyecto</h1>
+
+    <div class="card">
+      <h2>Presupuesto Estimado</h2>
+      <p>Visualización dinámica del archivo <strong>Multimedia/presupuesto.xlsx</strong>:</p>
+      <div id="excel-preview" style="overflow-x:auto; margin-top:1rem;"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <script>
+    fetch('presupuesto.xlsx')
+      .then(response => response.arrayBuffer())
+      .then(data => {
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const html = XLSX.utils.sheet_to_html(worksheet, { editable: false, header: '' });
+
+        const container = document.getElementById('excel-preview');
+        container.innerHTML = html;
+
+        container.querySelectorAll('table').forEach((table) => {
+          table.style.width = '100%';
+          table.style.borderCollapse = 'collapse';
+          table.querySelectorAll('th, td').forEach((cell) => {
+            cell.style.border = '1px solid var(--titanium)';
+            cell.style.padding = '0.75rem';
+            cell.style.color = 'var(--titanium)';
+          });
+          table.querySelectorAll('th').forEach((th) => {
+            th.style.backgroundColor = '#1C1C1C';
+            th.style.color = 'var(--electric-blue)';
+          });
+        });
+      })
+      .catch(error => {
+        document.getElementById('excel-preview').innerHTML = "<p style='color: var(--titanium)'>No se pudo cargar el archivo. Asegúrate de que <code>Multimedia/presupuesto.xlsx</code> existe y estás sirviendo esta página desde un servidor web.</p>";
+        console.error("Error cargando Excel:", error);
+      });
+  </script>
+</body>
+</html>
